@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Viewport -->
+
+<!-- Title -->
+<title>Cadibal</title>
+
+<!-- Meta Description -->
+<meta name="description" content="Cadibal is a platform dedicated to providing free education, job searching resources, and a social community for developers and students to connect and grow.">
+
+<!-- Meta Keywords -->
+<meta name="keywords" content="Cadibal, free education, job searching, social community, developers, students, online learning, career growth">
+
+<!-- Author -->
+<meta name="author" content="Cadibal Team">
+
+
+<!-- Verification Tags (for Google Search Console, Bing Webmaster Tools, etc.) -->
+<meta name="google-site-verification" content="verification-token">
+<meta name="bing-site-verification" content="verification-token">
+<!-- Robots -->
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="Cadibal - Free Education and Social Community">
+<meta property="og:description" content="Join Cadibal, the platform for free education, job searching, and creating a social community to help developers and students.">
+<meta property="og:url" content="https://cadibal.com">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cadibal - Empowering Developers and Students">
+<meta name="twitter:description" content="Discover Cadibal, a platform offering free education, job searching resources, and a social community for developers and students.">
+<meta name="twitter:image" content="https://cadibal.com/assets/images/cadibal-social-banner.jpg">
+<meta name="twitter:url" content="https://cadibal.com">
+
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://cadibal.com">
+    <title>Job Upload Form</title>
+    <link rel="icon" type="image/x-icon" href="../static/img/logo/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/nav.css">
+    <link rel="stylesheet" href="../static/css/register.css">
+    <link rel="stylesheet" href="../static/css/dashboard.css">
+    <script src="../static/js/dashboard.js"></script>
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    {% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+    
+    {% if success %}
+    <div class="alert alert-success">{{ success }}</div>
+    {% endif %}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Job Upload Form</h2>
+    <form action="{{ url_for('job_upload') }}" method="POST">        <div class="mb-3">
+            <label for="jobTitle" class="form-label">Job Title</label>
+            <input type="text" class="form-control" id="jobTitle" name="jobTitle" placeholder="Enter Job Title" required>
+        </div>
+        <div class="mb-3">
+            <label for="jobDomain" class="form-label">Job Domain</label>
+            <select class="form-control" id="jobDomain" name="jobDomain" required>
+                <option value="">Select Job Domain</option>
+                <option value="it">Information Technology</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="education">Education</option>
+                <option value="marketing">Marketing</option>
+                <option value="finance">Finance</option>
+                <option value="engineering">Engineering</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="jobLocation" class="form-label">Job Location</label>
+            <input type="text" class="form-control" id="jobLocation" name="jobLocation" placeholder="Enter Job Location" required>
+        </div>
+        <div class="mb-3">
+            <label for="workType" class="form-label">Work Type</label>
+            <select class="form-control" id="workType" name="workType" required>
+                <option value="">Select Work Type</option>
+                <option value="office">Work from Office</option>
+                <option value="home">Work from Home</option>
+                <option value="hybrid">Hybrid</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="jobType" class="form-label">Job Type</label>
+            <select class="form-control" id="jobType" name="jobType" required>
+                <option value="">Select Job Type</option>
+                <option value="full-time">Full-time</option>
+                <option value="part-time">Part-time</option>
+                <option value="contract">Contract</option>
+                <option value="internship">Internship</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="experienceLevel" class="form-label">Experience Level</label>
+            <select class="form-control" id="experienceLevel" name="experienceLevel" required>
+                <option value="">Select Experience Level</option>
+                <option value="fresher">Fresher</option>
+                <option value="experienced">Experienced</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="salary" class="form-label">Salary</label>
+            <input type="text" class="form-control" id="salary" name="salary" placeholder="Enter Salary (e.g., $50,000/year)">
+        </div>
+        <div class="mb-3">
+            <label for="jobDescription" class="form-label">Job Description</label>
+            <textarea class="form-control" id="jobDescription" name="jobDescription" rows="4" placeholder="Enter Job Description" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="requiredQualification" class="form-label">Required Qualification</label>
+            <textarea class="form-control" id="requiredQualification" name="requiredQualification" rows="3" placeholder="Enter Required Qualifications" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="skillsRequired" class="form-label">Skills Required</label>
+            <input type="text" class="form-control" id="skillsRequired" name="skillsRequired" placeholder="Enter Required Skills" required>
+        </div>
+        <div class="mb-3">
+            <label for="applicationDeadline" class="form-label">Application Deadline</label>
+            <input type="date" class="form-control" id="applicationDeadline" name="applicationDeadline" required>
+        </div>
+        <div class="mb-3">
+            <label for="contactEmail" class="form-label">Contact Email</label>
+            <input type="email" class="form-control" id="contactEmail" name="contactEmail" placeholder="Enter Contact Email" required>
+        </div>
+        <div class="mb-3">
+            <label for="jobLink" class="form-label">Job Link</label>
+            <input type="url" class="form-control" id="jobLink" name="jobLink" placeholder="Enter Job Link" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Post Job</button>
+    </form>
+</div>
+{% include 'warning.html' %}
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

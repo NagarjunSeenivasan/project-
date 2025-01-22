@@ -1,0 +1,101 @@
+ /* Sidebar */
+ .sidebar {
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  .sidebar .form-label {
+    font-weight: bold;
+    color: #333;
+  }
+  .sidebar input {
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  .sidebar input:focus {
+    box-shadow: 0 4px 15px rgba(0, 150, 255, 0.2);
+    border-color: #ff914d;
+  }
+  .btn-apply {
+    background-color: #ff914d;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
+  .btn-apply:hover {
+    background-color: #d2e3fc;
+  }
+
+  /* Job Card Styling */
+  .job-card {
+    background-color: #ff914d2a;
+    border-radius: 1rem;
+    padding: 20px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .job-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  .job-card .company-logo {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+
+  .job-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+  }
+  .company-name {
+    font-size: 1.1rem;
+    color: #555;
+  }
+  .job-location,
+  .job-experience {
+    font-size: 0.875rem;
+    color: #999;
+  }
+
+  .job-card .apply-btn {
+    background-color: #ff914d;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+  }
+  .job-card .apply-btn:hover {
+    background-color: #d2e3fc;
+    transform: scale(1.05);
+  }
+
+  .filter-title {
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: #333;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .job-card {
+      padding: 15px;
+    }
+  }
+
+  /* Add a subtle box shadow to the filter inputs */
+  .sidebar input,
+  .btn-apply {
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }

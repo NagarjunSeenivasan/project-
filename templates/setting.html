@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Viewport -->
+
+<!-- Title -->
+<title>Cadibal</title>
+
+<!-- Meta Description -->
+<meta name="description" content="Cadibal is a platform dedicated to providing free education, job searching resources, and a social community for developers and students to connect and grow.">
+
+<!-- Meta Keywords -->
+<meta name="keywords" content="Cadibal, free education, job searching, social community, developers, students, online learning, career growth">
+
+<!-- Author -->
+<meta name="author" content="Cadibal Team">
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Cadibal",
+      "url": "https://cadibal.com",
+      "logo": "https://cadibal.com/static/img/logo/favicon.png",
+      "description": "Cadibal is a platform dedicated to providing free education, job searching resources, and a social community for developers and students to connect and grow.",
+      "sameAs": [
+        "https://www.instagram.com/cadibal.info/",
+        "https://x.com/cadibal_info",
+        "https://www.linkedin.com/company/cadibaltech/"
+      ]
+    }
+    </script>
+<!-- Robots -->
+<meta name="robots" content="index, follow">
+
+<!-- Verification Tags (for Google Search Console, Bing Webmaster Tools, etc.) -->
+<meta name="google-site-verification" content="verification-token">
+<meta name="bing-site-verification" content="verification-token">
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="Cadibal - Free Education and Social Community">
+<meta property="og:description" content="Join Cadibal, the platform for free education, job searching, and creating a social community to help developers and students.">
+<meta property="og:url" content="https://cadibal.com">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cadibal - Empowering Developers and Students">
+<meta name="twitter:description" content="Discover Cadibal, a platform offering free education, job searching resources, and a social community for developers and students.">
+<meta name="twitter:image" content="https://cadibal.com/assets/images/cadibal-social-banner.jpg">
+<meta name="twitter:url" content="https://cadibal.com">
+
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://cadibal.com">
+    <title>Settings | Redesigned</title>
+    <link rel="icon" type="image/x-icon" href="../static/img/logo/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+       
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px 30px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ff914d;
+            padding-bottom: 10px;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .setting-item .form-check-label,
+        .setting-item label {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            padding: 10px 20px;
+        }
+
+        .form-select, .form-control {
+            max-width: 400px;
+        }
+
+        .text-muted {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .delete-account {
+            background-color: #fff5f5;
+            border: 1px solid #f8d7da;
+            color: #d9534f;
+        }
+
+        .delete-account .btn-danger {
+            background-color: #d9534f;
+            border-color: #d9534f;
+        }
+
+        .delete-account .btn-danger:hover {
+            background-color: #c9302c;
+            border-color: #ac2925;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Account Preferences -->
+        <div>
+            <h2 class="section-title">Account Preferences</h2>
+            <div class="setting-item">
+                <label for="language">Preferred Language</label>
+                <select class="form-select" id="language" name="language">
+                    <option value="english">English</option>
+                    <option value="spanish">Spanish</option>
+                    <option value="french">French</option>
+                    <option value="german">German</option>
+                </select>
+            </div>
+            <div class="setting-item">
+                <label for="timezone">Time Zone</label>
+                <select class="form-select" id="timezone" name="timezone">
+                    <option value="gmt">GMT</option>
+                    <option value="est">EST</option>
+                    <option value="pst">PST</option>
+                    <option value="ist">IST</option>
+                </select>
+            </div>
+            <div class="setting-item">
+                <label for="profileVisibility">Profile Visibility</label>
+                <select class="form-select" id="profileVisibility" name="profileVisibility">
+                    <option value="public">Public</option>
+                    <option value="private">Private</option>
+                    <option value="friends">Only Friends</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Privacy Settings -->
+        <div>
+            <h2 class="section-title">Privacy Settings</h2>
+            <div class="setting-item">
+                <div>
+                    <label class="form-check-label">Make Profile Public</label>
+                    <p class="text-muted">Your profile will be visible to everyone.</p>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="publicProfile" checked>
+                </div>
+            </div>
+            <div class="setting-item">
+                <div>
+                    <label class="form-check-label">Enable Two-Factor Authentication</label>
+                    <p class="text-muted">Adds an extra layer of security to your account.</p>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="twoFactor" checked>
+                </div>
+            </div>
+            <div class="setting-item">
+                <div>
+                    <label class="form-check-label">Allow Data Sharing</label>
+                    <p class="text-muted">Enable this to share your data with third parties.</p>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="shareData">
+                </div>
+            </div>
+        </div>
+
+        <!-- Notification Settings -->
+        <div>
+            <h2 class="section-title">Notification Settings</h2>
+            <div class="setting-item">
+                <label for="notificationFrequency">Notification Frequency</label>
+                <select class="form-select" id="notificationFrequency">
+                    <option value="instant">Instant</option>
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                </select>
+            </div>
+            <div class="setting-item">
+                <div>
+                    <label class="form-check-label">Receive Email Notifications</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="emailNotifications" checked>
+                </div>
+            </div>
+            <div class="setting-item">
+                <div>
+                    <label class="form-check-label">Receive SMS Notifications</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="smsNotifications">
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Account -->
+        <div class="delete-account mt-4 p-3 rounded">
+            <h2 class="section-title text-danger">Delete Account</h2>
+            <p class="text-muted">If you delete your account, all your data will be permanently erased and cannot be recovered.</p>
+            <button class="btn btn-danger">Delete My Account</button>
+        </div>
+    </div>
+    {% include 'warning.html' %}
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

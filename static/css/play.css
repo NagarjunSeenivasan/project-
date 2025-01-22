@@ -1,0 +1,122 @@
+/* Video container */
+.video-container {
+    max-width: 900px;
+    margin: 50px auto;
+    background-color: #fff;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Video styling */
+video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Title and description styling */
+.video-details {
+    margin-top: 20px;
+}
+
+/* Channel Info */
+.channel-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 5px;
+}
+
+/* Channel Info left side */
+.channel-info .left-side {
+    display: flex;
+    align-items: center;
+}
+
+.channel-info img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+}
+
+.channel-info .ms-3 h6 {
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.channel-info .ms-3 p {
+    font-size: 1rem;
+    color: #777;
+}
+
+/* Like and Dislike buttons (right side) */
+.like-dislike {
+    display: flex;
+    align-items: center;
+    
+}
+
+.like-dislike button {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin-left: 15px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.like-dislike button:hover {
+    transform: scale(1.1);
+}
+
+.like-dislike .btn-like {
+    background-color: #28a745;
+    color: white;
+}
+
+.like-dislike .btn-like i {
+    margin-right: 8px;
+}
+
+.like-dislike .btn-dislike {
+    background-color: #dc3545;
+    color: white;
+}
+
+.like-dislike .btn-dislike i {
+    margin-right: 8px;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .video-container {
+        margin-top: 30px;
+    }
+    video {
+        height: 100%;
+    }
+}
+
+.video-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+
+.channel-description .card {
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+border: none;
+}
+
+.channel-description .card-body {
+text-align: left;
+padding: 20px;
+}

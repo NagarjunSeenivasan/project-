@@ -1,0 +1,20 @@
+/* Remove button styling */
+.dropdown-item .btn {
+    margin-left: auto; /* Push the button to the right */
+    padding: 0 5px;
+    border: none;
+    background: none;
+}
+
+.dropdown-item .btn:hover {
+    background-color: transparent;
+}
+
+.dropdown-item .bi-trash {
+    font-size: 16px;
+    color: #dc3545; /* Red color for the trash icon */
+}
+
+.dropdown-item .btn-sm {
+    font-size: 12px;
+}

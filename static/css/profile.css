@@ -1,0 +1,322 @@
+
+
+/* Profile Container */
+.profile-container {
+    max-width: 1100px;
+    margin: 30px auto;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+/* Banner Section */
+.banner img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Profile Info Section */
+.profile-info {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff2a;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(99, 99, 99, 0.1);
+}
+
+.profile-photo img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-details {
+    margin-left: 20px;
+}
+
+.profile-details h1 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #222;
+}
+
+.profile-details .email,
+.profile-details .bio {
+    font-size: 14px;
+    color: #666;
+    margin-top: 8px;
+}
+
+.profile-details i {
+    color: #007bff;
+    margin-right: 8px;
+}
+
+/* Stats Section */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(99, 99, 99, 0.1);
+
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-title {
+    font-size: 16px;
+    color: #666;
+}
+
+.stat-value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.stat-icon {
+    font-size: 24px;
+    color: #007bff;
+    margin-bottom: 8px;
+}
+
+/* Post List Section */
+
+/* Post List */
+.post-list,.video-list,.job-list{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.post-card ,.video-card,.job-card {
+    background-color: #ff914d2a;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 5px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.post-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.post-header,.video-header {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.post-avatar img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.post-info h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.post-date {
+    font-size: 14px;
+    color: #888;
+}
+
+.post-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 10px 0;
+}
+
+.post-description {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+    padding-left: 55px;
+}
+
+.post-media img ,.video-content video{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* Post Footer */
+.post-footer,.video-footer,.job-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+.post-header h3, .video-header h3, .job-header h3 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.post-actions,.video-actions {
+    display: flex;
+    gap: 15px; /* Space between buttons */
+}
+
+.like-btn,
+.share-btn,
+.apply-btn {
+    background-color: transparent;
+    color: #007bff;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.like-btn:hover,
+.share-btn:hover {
+    color: #0056b3;
+}
+
+/* Optional: Add more visual distinction when hovering over buttons */
+.like-btn:focus,
+.share-btn:focus {
+    outline: none;
+}
+
+.like-btn i,
+.share-btn i {
+    font-size: 18px;
+}
+
+/* Optional: Style for buttons on hover to emphasize action */
+.like-btn:hover i,
+.share-btn:hover i {
+    color: #0056b3;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .post-list ,.video-list,.job-list {
+        grid-template-columns: 1fr; /* 1 column for tablets */
+    }
+
+    .profile-info {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-top: -80px;
+    }
+
+    .profile-details h1 {
+        font-size: 24px;
+    }
+
+    .profile-photo img {
+        width: 100px;
+        height: 100px;
+    }
+
+
+    .video-content video {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-container {
+        width: 95%;
+    }
+
+    .post-list,.video-list,.job-list {
+        grid-template-columns: 1fr; /* 1 column for mobile */
+        
+    }
+
+    .profile-details h1 {
+        font-size: 20px;
+    }
+
+    .profile-photo img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* Option Buttons */
+.options {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Style for the option buttons */
+.btn-option {
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 2px solid #007bff;
+    border-radius: 30px; /* More rounded corners for a modern look */
+    background-color: transparent;
+    color: #007bff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2); /* Subtle shadow for depth */
+}
+
+/* Hover Effect */
+.btn-option:hover {
+    background-color: #007bff; /* Blue background on hover */
+    color: #fff; /* White text on hover */
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3); /* Slightly stronger shadow */
+}
+
+/* Active Button Style */
+.btn-option.active {
+    background: linear-gradient(145deg, #007bff, #0056b3); /* Gradient background for active state */
+    color: #fff;
+    font-weight: 600; /* Slightly heavier weight for emphasis */
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4); /* Stronger shadow for active state */
+}
+
+/* Optional: Add focus effect for accessibility */
+.btn-option:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Focus effect */
+}
+
+/* Styling for Delete Button */
+.delete-btn {
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #dc3545;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.delete-btn:hover {
+    color: #fff;
+    background-color: #dc3545;
+    border-radius: 5px;
+}
+
+.delete-btn i {
+    margin-right: 5px;
+}

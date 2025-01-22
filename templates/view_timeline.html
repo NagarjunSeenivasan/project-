@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Viewport -->
+
+<!-- Title -->
+<title>Cadibal</title>
+
+<!-- Meta Description -->
+<meta name="description" content="Cadibal is a platform dedicated to providing free education, job searching resources, and a social community for developers and students to connect and grow.">
+
+<!-- Meta Keywords -->
+<meta name="keywords" content="Cadibal, free education, job searching, social community, developers, students, online learning, career growth">
+
+<!-- Author -->
+<meta name="author" content="Cadibal Team">
+
+<!-- Verification Tags (for Google Search Console, Bing Webmaster Tools, etc.) -->
+<meta name="google-site-verification" content="verification-token">
+<meta name="bing-site-verification" content="verification-token">
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Cadibal",
+      "url": "https://cadibal.com",
+      "logo": "https://cadibal.com/static/img/logo/favicon.png",
+      "description": "Cadibal is a platform dedicated to providing free education, job searching resources, and a social community for developers and students to connect and grow.",
+      "sameAs": [
+        "https://www.instagram.com/cadibal.info/",
+        "https://x.com/cadibal_info",
+        "https://www.linkedin.com/company/cadibaltech/"
+      ]
+    }
+    </script>
+<!-- Robots -->
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="Cadibal - Free Education and Social Community">
+<meta property="og:description" content="Join Cadibal, the platform for free education, job searching, and creating a social community to help developers and students.">
+<meta property="og:url" content="https://cadibal.com">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cadibal - Empowering Developers and Students">
+<meta name="twitter:description" content="Discover Cadibal, a platform offering free education, job searching resources, and a social community for developers and students.">
+<meta name="twitter:image" content="https://cadibal.com/assets/images/cadibal-social-banner.jpg">
+<meta name="twitter:url" content="https://cadibal.com">
+
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://cadibal.com">
+    <link rel="icon" type="image/x-icon" href="../static/img/logo/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Profile</title>
+    <!-- Include Bootstrap CSS (if not already included) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/nav.css">
+    <link rel="stylesheet" href="../static/css/dashboard.css">
+    <script src="../static/js/dashboard.js"></script>
+    <style>
+        /* Container Styling */
+        .line-timeline {
+            position: relative;
+            padding: 1rem 0;
+            max-width: 800px;
+            margin: auto;
+        }
+        
+        /* Vertical Line */
+        .line-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: #e9ecef;
+            z-index: 1;
+            transform: translateX(-50%);
+        }
+        
+        /* Timeline Item Styling */
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        /* Marker Styling */
+        .timeline-marker {
+            z-index: 2;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80px;
+            height: 80px;
+            background: #ffffff;
+            border: 4px solid #0d6efd;
+            border-radius: 50%;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(-50%);
+        }
+        
+        .timeline-marker img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        /* Content Styling */
+        .timeline-content {
+            width: 45%;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+        
+        .timeline-content h4.name {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #0d6efd;
+            margin-bottom: 0.4rem;
+        }
+        
+        .timeline-content h5.title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #6c757d;
+            margin-bottom: 0.4rem;
+        }
+        
+        .timeline-content p.description {
+            font-size: 0.85rem;
+            color: #495057;
+            margin-bottom: 0.8rem;
+        }
+        
+        .timeline-content span.date {
+            font-size: 0.75rem;
+            color: #adb5bd;
+            font-style: italic;
+        }
+        
+        /* Responsive Design for Mobile */
+        @media (max-width: 768px) {
+            .line-timeline::before {
+                left: 50%;
+            }
+        
+            .timeline-item {
+                flex-direction: column;
+                align-items: center;
+            }
+        
+            .timeline-marker {
+                transform: translateX(-50%);
+                margin: 0 auto;
+                width: 60px;
+                height: 60px;
+            }
+        
+            .timeline-content {
+                width: 80%; /* Take up more space */
+                margin: 1rem auto 0; /* Center below marker */
+                text-align: center;
+            }
+        
+            .timeline-marker img {
+                width: 50px;
+                height: 50px;
+            }
+        
+            .timeline-content h4.name {
+                font-size: 0.9rem;
+            }
+        
+            .timeline-content h5.title {
+                font-size: 0.8rem;
+            }
+        
+            .timeline-content p.description {
+                font-size: 0.8rem;
+            }
+        
+            .timeline-content span.date {
+                font-size: 0.7rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .timeline-marker {
+                width: 50px;
+                height: 50px;
+                display: none;
+            }
+        
+            .timeline-marker img {
+                width: 40px;
+                height: 40px;
+            }
+        
+            .timeline-content {
+                padding: 0.8rem;
+            }
+        
+            .timeline-content h4.name {
+                font-size: 0.8rem;
+            }
+        
+            .timeline-content h5.title {
+                font-size: 0.75rem;
+            }
+        
+            .timeline-content p.description {
+                font-size: 0.75rem;
+            }
+        
+            .timeline-content span.date {
+                font-size: 0.65rem;
+            }
+        }
+        </style>
+        
+</head>
+<body>
+    <!-- Navbar -->
+     
+
+    <div class="container py-5">
+        <h2 class="text-center mb-5">Journey</h2>
+
+        <div class="line-timeline">
+            {% for item in timeline_posts %}
+                <div class="timeline-item">
+                    {% if loop.index % 2 == 0 %}
+                        <!-- Event Marker and Content: Even Index -->
+                        
+                        <div class="timeline-content right">
+                            <h4 class="name">{{ item.event_name }}</h4>
+                            <h5 class="title">{{ item.project_name }}</h5>
+                            <p class="description">{{ item.description }}</p>
+                            <span class="date">{{ item.event_date.strftime('%B %d, %Y') }}</span>
+                            <p class="location">Event Location: {{ item.event_place }}</p>
+                            <p class="contribution">Your Contribution: {{ item.your_contribution }}</p>
+                            
+                            
+                        </div>
+                    {% else %}
+                        <!-- Event Content and Marker: Odd Index -->
+                        <div class="timeline-content left">
+                            <h4 class="name">{{ item.event_name }}</h4>
+                            <h5 class="title">{{ item.project_name }}</h5>
+                            <p class="description">{{ item.description }}</p>
+                            <span class="date">{{ item.event_date.strftime('%B %d, %Y') }}</span>
+                            <p class="location">Event Location: {{ item.event_place }}</p>
+                            <p class="contribution">Your Contribution: {{ item.your_contribution }}</p>
+                            
+                            
+                        </div>
+                        
+                    {% endif %}
+                </div>
+            {% else %}
+                <p>No timeline events found.</p>  <!-- If there are no timeline posts -->
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+    
+
+{% include 'warning.html' %}
+
+
+    <script>
+        function confirmDelete() {
+          return confirm("Are you sure you want to delete this event?");
+        }
+      </script>
+      
+
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</html>

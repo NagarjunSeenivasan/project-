@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Viewport -->
+
+<!-- Title -->
+<title>Cadibal</title>
+
+<!-- Meta Description -->
+<meta name="description" content="Cadibal is a platform dedicated to providing free education, job searching resources, and a social community for developers and students to connect and grow.">
+
+<!-- Meta Keywords -->
+<meta name="keywords" content="Cadibal, free education, job searching, social community, developers, students, online learning, career growth">
+
+<!-- Author -->
+<meta name="author" content="Cadibal Team">
+
+<!-- Verification Tags (for Google Search Console, Bing Webmaster Tools, etc.) -->
+<meta name="google-site-verification" content="verification-token">
+<meta name="bing-site-verification" content="verification-token">
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Cadibal",
+      "url": "https://cadibal.com",
+      "logo": "https://cadibal.com/static/img/logo/favicon.png",
+      "description": "Cadibal is a platform dedicated to providing free education, job searching resources, and a social community for developers and students to connect and grow.",
+      "sameAs": [
+        "https://www.instagram.com/cadibal.info/",
+        "https://x.com/cadibal_info",
+        "https://www.linkedin.com/company/cadibaltech/"
+      ]
+    }
+    </script>
+<!-- Robots -->
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="Cadibal - Free Education and Social Community">
+<meta property="og:description" content="Join Cadibal, the platform for free education, job searching, and creating a social community to help developers and students.">
+<meta property="og:url" content="https://cadibal.com">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cadibal - Empowering Developers and Students">
+<meta name="twitter:description" content="Discover Cadibal, a platform offering free education, job searching resources, and a social community for developers and students.">
+<meta name="twitter:image" content="https://cadibal.com/assets/images/cadibal-social-banner.jpg">
+<meta name="twitter:url" content="https://cadibal.com">
+
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://cadibal.com">
+    <link rel="icon" type="image/x-icon" href="../static/img/logo/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Profile</title>
+    <link rel="stylesheet" href="../static/css/profile.css">
+    <!-- Include Bootstrap CSS (if not already included) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/nav.css">
+    <link rel="stylesheet" href="../static/css/dashboard.css">
+    <script src="../static/js/dashboard.js"></script>
+</head>
+<style>
+    a{
+        text-decoration: none;
+    }
+</style>
+<body>
+    <!-- Navbar -->
+    {% include 'navbar.html' %}
+
+    <div class="profile-container">
+        <!-- Banner -->
+        <div class="banner">
+            <!-- Check if banner photo exists, fallback to default if not -->
+            <img src="../{{ user['bannerPhoto'] or url_for('static', filename='img/default-banner.jpg') }}" alt="Banner Image" >
+        </div>
+    
+        <!-- Profile Info -->
+        <div class="profile-info">
+            <div class="profile-photo">
+                <!-- Check if profile photo exists, fallback to default if not -->
+                <img src="../{{ user['profilePhoto'] or url_for('static', filename='img/default-profile.jpg') }}" alt="Profile Photo" >
+            </div>
+            <div class="profile-details">
+                <h1>{{ user.firstName }}</h1>
+                <p class="email"><i class="fas fa-envelope"></i> {{ user.email }}</p>
+                <p class="bio"><i class="fas fa-user-alt"></i> {{ user.education }}</p>
+            </div>
+        </div>
+            
+            <!-- Stats Section -->
+            <div class="stats">
+                <div class="stat-item">
+                    <a href="/timeline">
+                    <i class="fas fa-pen-alt stat-icon"></i>
+                    <p class="stat-title">Timeline</p>
+                    <p class="stat-value">click</p>
+                    </a>
+                </div>
+                <div class="stat-item">
+                    <a href="/follower">
+                    <i class="fas fa-users stat-icon"></i>
+                    <p class="stat-title">Followers</p>
+                    <p class="stat-value">{{ user.followers | length }}</p>
+                    </a>
+                </div>
+                <div class="stat-item">
+                    <a href="/following">
+                    <i class="fas fa-user-check stat-icon"></i>
+                    <p class="stat-title">Following</p>
+                    <p class="stat-value">{{ user.following | length }}</p>
+                    </a>
+                </div>
+            </div>
+                    <h2> Recent Posts</h2>
+
+        <!-- Post List -->
+        <div class="post-list">
+            {% if posts %}
+                {% for post in posts %}
+                <div class="post-card" id="post-{{ post['_id'] }}">
+                    <!-- Post Header -->
+                    <div class="post-header d-flex align-items-center">
+                        <div class="post-avatar">
+                            <img src="../{{ post['publisher_photo'] }}" alt="{{ post['publisher_name'] }}'s Avatar">
+                        </div>
+                        <div class="post-info">
+                            <h3 class="post-author">{{ post['publisher_name'] }}</h3>
+                            <p class="post-date m-0">
+                                <i class="fas fa-clock"></i> {{ post['uploaded_at'].strftime('%B %d, %Y') }}
+                            </p>
+                        </div>
+                    </div>
+        
+                    <div class="post-content">
+                        <p class="post-description">{{ post['description'] }}</p>
+                        {% if post['file_path'] %}
+                        <div class="post-media">
+                            {% if post['file_path'].lower().endswith(('.jpg', '.jpeg', '.png', '.gif')) %}
+                            <img src="../static/{{ post['file_path'] }}" alt="Post Media" class="post-image">
+                            {% elif post['file_path'].lower().endswith('.pdf') %}
+                            <iframe src="../{{ post['file_path'] }}#toolbar=0" class="post-pdf" frameborder="0"></iframe>
+                            {% else %}
+                            <p>Unsupported media type.</p>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+        
+                    <!-- Post Footer -->
+                    <div class="post-footer">
+                        <div class="post-actions d-flex justify-content-between">
+                            <button class="like-btn">
+                                <i class="fas fa-thumbs-up"></i>  {% if post['likes'] %}{{ post['likes'] | length }}{% else %}0{% endif %} 
+                            </button>
+                            <form action="/delete_post" method="POST">
+                                <input type="hidden" name="post_id" value="{{ post['_id'] }}">
+                                <button type="submit" class="delete-btn">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+            <p class="no-posts">No posts to display.</p>
+            {% endif %}
+        </div>
+        {% include 'warning.html' %}
+
+        <script>
+            function deletePost(postId) {
+    console.log(`Attempting to delete post with ID: ${postId}`); // Debug log
+
+    fetch(`/delete_post/${postId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => {
+            console.log(`Server responded with status: ${response.status}`);
+            return response.json();
+        })
+        .then(data => {
+            console.log('Server response data:', data); // Debug log
+
+            if (data.success) {
+                // Remove the post from the DOM
+                const postElement = document.getElementById(`post-${postId}`);
+                if (postElement) {
+                    postElement.remove();
+                    alert('Post deleted successfully.');
+                } else {
+                    alert('Post not found in the DOM.');
+                }
+            } else {
+                alert(data.error || 'An error occurred.');
+            }
+        })
+        .catch(error => {
+            console.error('Error deleting post:', error);
+            alert('An error occurred while deleting the post.');
+        });
+}
+
+
+
+
+        </script>
+        
+        
+
+    <!-- Include Bootstrap JS (required for Navbar collapse functionality) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function deletePost(button) {
+        // Confirm before deleting
+         if (confirm("Are you sure you want to delete this post?")) {
+        // Find and remove the parent card of the button
+        var postCard = button.closest('.post-card');
+        postCard.remove();
+    }
+}
+    </script>
+</body>
+</html>

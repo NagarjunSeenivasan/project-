@@ -1,0 +1,101 @@
+/* Custom styles for the video card */
+.custom-card {
+    border: none;
+    border-radius: 15px; /* Rounded corners for a more modern feel */
+    background: linear-gradient(145deg, #ffffff, #f2f2f2); /* Soft gradient background */
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Slight 3D shadow for a floating effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+  }
+  
+  .custom-card:hover {
+    transform: translateY(-8px); /* Slight upward movement on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+    background-color: #ffffff; /* Lighter background color when hovered */
+  }
+  
+  /* Thumbnail styles */
+  .custom-card .card-img-top {
+    height: 200px !important; /* Slightly taller for better visual impact */
+    object-fit: cover; /* Keeps the image aspect ratio */
+    border-bottom: 3px solid #ddd; /* Adds a thicker border to separate thumbnail */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  .custom-card:hover .card-img-top {
+    transform: scale(1.05); /* Zoom effect on hover */
+  }
+  
+  /* Publisher info (photo and channel name) */
+  .publisher-photo {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%; /* Perfect circle */
+    border: 2px solid #007bff; /* Blue border for visual emphasis */
+  }
+  
+  .channel-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333; /* Dark text for better contrast */
+    margin-left: 12px;
+    font-family: 'Roboto', sans-serif; /* Modern font for better readability */
+  }
+  
+  /* Video description */
+  .video-description {
+    font-size: 14px;
+    color: #666; /* Lighter color for description */
+    margin: 10px 0;
+    line-height: 1.6; /* Improved line spacing */
+    font-family: 'Arial', sans-serif;
+    max-height: 50px; /* Limit the height for cleaner layout */
+    overflow: hidden; /* Hide overflowed text */
+    text-overflow: ellipsis; /* Add ellipsis for long descriptions */
+  }
+  
+  /* Metadata (duration, view count, date) */
+  .video-meta {
+    font-size: 13px;
+    color: #888;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .video-duration, .view-count, .publish-date {
+    color: #888;
+    transition: color 0.3s ease;
+  }
+  
+  .video-duration:hover, .view-count:hover, .publish-date:hover {
+    color: #007bff; /* Change to blue when hovered */
+  }
+  
+  /* Hover effects for the text links or interactive elements */
+  .custom-card .video-meta span:hover {
+    color: #007bff; /* Highlight color on hover */
+    cursor: pointer;
+  }
+  
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 576px) {
+    .custom-card {
+      border-radius: 10px; /* Less rounded corners for small screens */
+    }
+  
+    .channel-name {
+      font-size: 14px; /* Slightly smaller font for channel name */
+    }
+  
+    .video-description {
+      font-size: 12px; /* Smaller font size for description */
+    }
+  }
+  
+  .card-body{
+    padding: 10px !important;
+    background-color: #ffbf972a;
+  }

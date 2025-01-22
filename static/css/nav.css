@@ -1,0 +1,77 @@
+/* Navbar styling */
+.navbar-custom {
+    background-color: #fff;
+    border-radius: 50px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+}
+
+.navbar-nav .nav-link {
+    color: #333;
+    font-weight: 500;
+    margin-right: 20px;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover, 
+.navbar-nav .nav-link.active {
+    color: #ff914d;
+}
+
+/* Get Started Button */
+.btn-get-started {
+    background-color: #ff914d;
+    color: #fff;
+    border-radius: 25px;
+    padding: 8px 20px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-get-started:hover {
+    background-color: #ff914d;
+}
+
+/* Dropdown styling */
+.dropdown-menu {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.dropdown-item {
+    padding: 10px 20px;
+    font-weight: 500;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #ff914d;
+    color: #fff;
+}
+
+/* Centering navbar content */
+.container-custom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Profile Image */
+.navbar-nav .dropdown img {
+    transition: transform 0.3s ease;
+}
+
+.navbar-nav .dropdown img:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 992px) {
+    .container-custom {
+        justify-content: space-between;
+    }
+}

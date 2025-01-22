@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Viewport -->
+
+<!-- Title -->
+<title>Cadibal</title>
+
+<!-- Meta Description -->
+<meta name="description" content="Cadibal is a platform dedicated to providing free education, job searching resources, and a social community for developers and students to connect and grow.">
+
+<!-- Meta Keywords -->
+<meta name="keywords" content="Cadibal, free education, job searching, social community, developers, students, online learning, career growth">
+
+<!-- Author -->
+<meta name="author" content="Cadibal Team">
+
+<!-- Robots -->
+<meta name="robots" content="index, follow">
+
+<!-- Verification Tags (for Google Search Console, Bing Webmaster Tools, etc.) -->
+<meta name="google-site-verification" content="verification-token">
+<meta name="bing-site-verification" content="verification-token">
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Cadibal",
+      "url": "https://cadibal.com",
+      "logo": "https://cadibal.com/static/img/logo/favicon.png",
+      "description": "Cadibal is a platform dedicated to providing free education, job searching resources, and a social community for developers and students to connect and grow.",
+      "sameAs": [
+        "https://www.instagram.com/cadibal.info/",
+        "https://x.com/cadibal_info",
+        "https://www.linkedin.com/company/cadibaltech/"
+      ]
+    }
+    </script>
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="Cadibal - Free Education and Social Community">
+<meta property="og:description" content="Join Cadibal, the platform for free education, job searching, and creating a social community to help developers and students.">
+<meta property="og:url" content="https://cadibal.com">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cadibal - Empowering Developers and Students">
+<meta name="twitter:description" content="Discover Cadibal, a platform offering free education, job searching resources, and a social community for developers and students.">
+<meta name="twitter:image" content="https://cadibal.com/assets/images/cadibal-social-banner.jpg">
+<meta name="twitter:url" content="https://cadibal.com">
+
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://cadibal.com">
+    <title>User Registration Form</title>
+    <link rel="icon" type="image/x-icon" href="../static/img/logo/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card{
+            background: transparent;
+        }
+        .card-header{
+            background-color: #ff914d;
+        }
+        .btn{
+            background-color: #ff914d;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container my-5">
+        <!-- Registration Form Card -->
+        <div class="card shadow">
+            <div class="card-header text-white text-center">
+                <h3>User Registration Form</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="/register/user" enctype="multipart/form-data">
+                    <div class="row g-3">
+                        <!-- First Name -->
+                        <div class="col-md-6">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter your first name" required>
+                        </div>
+                        <!-- Last Name -->
+                        <div class="col-md-6">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                        </div>
+                        <!-- Email -->
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                        </div>
+                        <!-- Password -->
+                        <div class="col-md-6">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                        </div>
+                        <!-- Phone Number -->
+                        <div class="col-md-6">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required>
+                        </div>
+                        <!-- Gender -->
+                        <div class="col-md-6">
+                            <label for="gender" class="form-label">Gender</label>
+                            <select class="form-select" id="gender" name="gender" required>
+                                <option value="" disabled selected>Select your gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <!-- Date of Birth -->
+                        <div class="col-md-6">
+                            <label for="dob" class="form-label">Date of Birth</label>
+                            <input type="date" class="form-control" id="dob" name="dob" required>
+                        </div>
+                        <!-- Skills -->
+                        <div class="col-md-6">
+                            <label for="skills" class="form-label">Skills</label>
+                            <input type="text" class="form-control" id="skills" name="skills" placeholder="E.g., Python, JavaScript" required>
+                        </div>
+                        <!-- Education -->
+                        <div class="col-md-6">
+                            <label for="education" class="form-label">Education</label>
+                            <input type="text" class="form-control" id="education" name="education" placeholder="Enter your education details" required>
+                        </div>
+                        <!-- Address -->
+                        <div class="col-md-12">
+                            <label class="form-label">Address</label>
+                            <div class="row g-2">
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" name="doorNo" placeholder="Door No" required>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" name="area" placeholder="Area" required>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" name="district" placeholder="District" required>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" name="state" placeholder="State" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="country" placeholder="Country" required>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Profile Photo -->
+                        <div class="col-md-6">
+                            <label for="profilePhoto" class="form-label">Profile Photo</label>
+                            <input type="file" class="form-control" id="profilePhoto" name="profilePhoto" accept="image/*" required>
+                        </div>
+                        <!-- Banner Photo -->
+                        <div class="col-md-6">
+                            <label for="bannerPhoto" class="form-label">Banner Photo</label>
+                            <input type="file" class="form-control" id="bannerPhoto" name="bannerPhoto" accept="image/*">
+                        </div>
+                    </div>
+                    <!-- Submit Button -->
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% include 'warning.html' %}
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- DOMPurify JS -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@2.0.17/dist/purify.min.js"></script>
+    <script>
+        // Example function to sanitize the input before submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const firstNameInput = document.getElementById('firstName');
+            firstNameInput.value = DOMPurify.sanitize(firstNameInput.value);
+            
+            const lastNameInput = document.getElementById('lastName');
+            lastNameInput.value = DOMPurify.sanitize(lastNameInput.value);
+            
+            const emailInput = document.getElementById('email');
+            emailInput.value = DOMPurify.sanitize(emailInput.value);
+            
+            const passwordInput = document.getElementById('password');
+            passwordInput.value = DOMPurify.sanitize(passwordInput.value);
+            
+            const phoneInput = document.getElementById('phone');
+            phoneInput.value = DOMPurify.sanitize(phoneInput.value);
+            
+            const skillsInput = document.getElementById('skills');
+            skillsInput.value = DOMPurify.sanitize(skillsInput.value);
+            
+            const educationInput = document.getElementById('education');
+            educationInput.value = DOMPurify.sanitize(educationInput.value);
+            
+            const doorNoInput = document.querySelector('input[name="doorNo"]');
+            doorNoInput.value = DOMPurify.sanitize(doorNoInput.value);
+            
+            const areaInput = document.querySelector('input[name="area"]');
+            areaInput.value = DOMPurify.sanitize(areaInput.value);
+            
+            const districtInput = document.querySelector('input[name="district"]');
+            districtInput.value = DOMPurify.sanitize(districtInput.value);
+            
+            const stateInput = document.querySelector('input[name="state"]');
+            stateInput.value = DOMPurify.sanitize(stateInput.value);
+            
+            const countryInput = document.querySelector('input[name="country"]');
+            countryInput.value = DOMPurify.sanitize(countryInput.value);
+        });
+         // File size and type validation
+         document.getElementById('profilePhoto').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file && file.size > 2 * 1024 * 1024) { // 2MB max
+                alert('Profile photo must be less than 2MB.');
+                e.target.value = ''; // Clear the input
+            }
+        });
+
+        document.getElementById('bannerPhoto').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file && file.size > 5 * 1024 * 1024) { // 5MB max
+                alert('Banner photo must be less than 5MB.');
+                e.target.value = ''; // Clear the input
+            }
+        });
+    </script>
+</body>
+</html>

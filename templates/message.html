@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Viewport -->
+
+<!-- Title -->
+<title>Cadibal</title>
+
+<!-- Meta Description -->
+<meta name="description" content="Cadibal is a platform dedicated to providing free education, job searching resources, and a social community for developers and students to connect and grow.">
+
+<!-- Meta Keywords -->
+<meta name="keywords" content="Cadibal, free education, job searching, social community, developers, students, online learning, career growth">
+
+<!-- Author -->
+<meta name="author" content="Cadibal Team">
+
+<!-- Robots -->
+<meta name="robots" content="index, follow">
+
+<!-- Verification Tags (for Google Search Console, Bing Webmaster Tools, etc.) -->
+<meta name="google-site-verification" content="verification-token">
+<meta name="bing-site-verification" content="verification-token">
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Cadibal",
+    "url": "https://cadibal.com",
+    "logo": "https://cadibal.com/static/img/logo/favicon.png",
+    "description": "Cadibal is a platform dedicated to providing free education, job searching resources, and a social community for developers and students to connect and grow.",
+    "sameAs": [
+      "https://www.instagram.com/cadibal.info/",
+      "https://x.com/cadibal_info",
+      "https://www.linkedin.com/company/cadibaltech/"
+    ]
+  }
+  </script>
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="Cadibal - Free Education and Social Community">
+<meta property="og:description" content="Join Cadibal, the platform for free education, job searching, and creating a social community to help developers and students.">
+<meta property="og:url" content="https://cadibal.com">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cadibal - Empowering Developers and Students">
+<meta name="twitter:description" content="Discover Cadibal, a platform offering free education, job searching resources, and a social community for developers and students.">
+<meta name="twitter:image" content="https://cadibal.com/assets/images/cadibal-social-banner.jpg">
+<meta name="twitter:url" content="https://cadibal.com">
+
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://cadibal.com">
+  <title>Responsive Chat Layout</title>
+  <link rel="icon" type="image/x-icon" href="../static/img/logo/favicon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/nav.css">
+  <link rel="stylesheet" href="../static/css/message.css">
+  <link rel="stylesheet" href="../static/css/dashboard.css">
+  <script src="../static/js/dashboard.js"></script>
+
+</head>
+<body>
+  {% include 'navbar.html' %}
+
+  <section class="container">
+    <div class="chat-layout">
+      <!-- User List -->
+      <div id="userList" class="user-list">
+        <div class="search-bar">
+          <input type="text" id="searchInput" class="form-control" placeholder="Search users..." onkeyup="filterUsers()">
+        </div>
+      
+        <!-- Dynamically populate users here -->
+        {% for user in following_users %}
+        <div class="user-item" data-id="{{ user.user_id }}" onclick="openChat('{{ user.user_id }}')">
+          <img src="../{{ user.profilePhoto }}" alt="Profile" class="profile-pic">
+          <div>
+            <strong>{% if user.firstName %}
+              {{ user.firstName }}
+            {% else %}
+              {{ user.name }}
+            {% endif %}</strong><br>
+            <small>{{ user.email or 'No messages yet' }}</small>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      
+      <!-- Chat Box -->
+      <div id="chatBox" class="chat-box">
+        <div class="chat-header">
+          <span id="chatHeader">Chat</span>
+          <button class="btn btn-sm btn-light" onclick="goBack()">Back</button>
+        </div>
+        <div id="chatMessages" class="chat-messages">
+          <!-- Messages will be dynamically loaded here -->
+        </div>
+        <div class="chat-input">
+            <div class="input-group">
+              <input type="text" id="messageInput" class="form-control" placeholder="Type a message..." onkeydown="checkEnterKey(event)">
+              <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% include 'warning.html' %}
+
+  <script>
+    function fetchMessages() {
+        if (!currentReceiverId) return;
+
+        fetch(`/get_messages/${currentReceiverId}`)
+            .then(response => response.json())
+            .then(messages => {
+                const chatMessages = document.getElementById('chatMessages');
+                chatMessages.innerHTML = ''; // Clear previous messages
+                messages.forEach(message => {
+                    const messageBubble = document.createElement('div');
+                    messageBubble.classList.add('chat-bubble');
+                    messageBubble.classList.add(message.sender_id === '{{ user["_id"] }}' ? 'you' : 'other');
+                    messageBubble.innerHTML = `<strong>${message.sender_id === '{{ user["_id"] }}' ? 'You' : 'Other'}:</strong> ${message.message}`;
+                    chatMessages.appendChild(messageBubble);
+                });
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            })
+            .catch(err => console.error('Error fetching messages:', err));
+    }
+
+    // Periodically fetch messages every 2 seconds
+    setInterval(fetchMessages, 2000);
+
+    // Call fetchMessages immediately when opening a chat
+    function openChat(userId) {
+        currentReceiverId = userId;
+        document.getElementById('chatHeader').textContent = 'Chat  ';
+        document.getElementById('userList').classList.remove('active');
+        document.getElementById('chatBox').classList.add('active');
+        fetchMessages();
+    }
+    function checkEnterKey(event) {
+    if (event.key === 'Enter') {
+      sendMessage();
+    }
+  }
+</script>
+
+
+  <script>
+    let currentReceiverId = null;
+
+    function openChat(userId) {
+      currentReceiverId = userId;
+      document.getElementById('chatHeader').textContent = 'Chat '; // You can replace 'userId' with the actual name
+
+      // Show chat box, hide user list
+      document.getElementById('userList').classList.remove('active');
+      document.getElementById('chatBox').classList.add('active');
+
+      // Fetch and display messages
+      fetch(`/get_messages/${userId}`)
+        .then(response => response.json())
+        .then(messages => {
+          const chatMessages = document.getElementById('chatMessages');
+          chatMessages.innerHTML = ''; // Clear previous messages
+          messages.forEach(message => {
+            const messageBubble = document.createElement('div');
+            messageBubble.classList.add('chat-bubble');
+            messageBubble.classList.add(message.sender_id === '{{ user["_id"] }}' ? 'you' : 'other');
+            messageBubble.innerHTML = `<strong>${message.sender_id === '{{ user["_id"] }}' ? 'You' : 'Other'}:</strong> ${message.message}`;
+            chatMessages.appendChild(messageBubble);
+          });
+          chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll to the latest message
+        })
+        .catch(err => console.error('Error fetching messages:', err));
+    }
+
+    function sendMessage() {
+      const messageInput = document.getElementById('messageInput');
+      const messageContent = messageInput.value.trim();
+
+      if (!messageContent) return;
+
+      // Send the message
+      fetch('/send_message', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          receiver_id: currentReceiverId,
+          message: messageContent,
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          openChat(currentReceiverId); // Reload messages after sending
+          messageInput.value = ''; // Clear input field
+        } else {
+          alert('Failed to send message');
+        }
+      })
+      .catch(err => console.error('Error sending message:', err));
+    }
+
+    function goBack() {
+      // Show user list and hide chat box
+      document.getElementById('chatBox').classList.remove('active');
+      document.getElementById('userList').classList.add('active');
+    }
+
+    function filterUsers() {
+      const searchInput = document.getElementById('searchInput').value.toLowerCase();
+      const userItems = document.querySelectorAll('.user-item');
+      
+      userItems.forEach(item => {
+        const name = item.querySelector('strong').textContent.toLowerCase();
+        item.style.display = name.includes(searchInput) ? '' : 'none';
+      });
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

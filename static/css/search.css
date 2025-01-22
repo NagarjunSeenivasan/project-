@@ -1,0 +1,121 @@
+
+.search-container {
+    width: 350px;
+    margin: 50px auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-top: 35px;
+}
+
+        /* Search Input */
+        .search-input {
+            width: 400px;
+            height: 50px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-size: 16px;
+            outline: none;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: #ff914d;
+            box-shadow: 0px 4px 15px rgba(255, 145, 77, 0.3);
+        }
+
+        /* Search Button */
+        .search-btn {
+            background-color: #ff914d;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            right: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 4px 8px rgba(255, 145, 77, 0.3);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .search-btn:hover {
+            background-color: #ff7520;
+            transform: scale(1.1);
+        }
+
+        /* Profile Section */
+.profile-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 30px; /* Add margin to separate it from the search bar */
+    width: 600px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.profile-container img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ff914d;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-info h5 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.profile-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+        /* Send Button */
+        .send-btn {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .send-btn:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        a{
+            text-decoration: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .search-input {
+                width: 350px;
+            }
+            
+            .profile-container{
+                width: 75%;
+            }
+        }

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="../static/img/logo/favicon.png">
+  <!-- Viewport -->
+
+<!-- Title -->
+<title>Cadibal</title>
+
+<!-- Meta Description -->
+<meta name="description" content="Cadibal is a platform dedicated to providing free education, job searching resources, and a social community for developers and students to connect and grow.">
+
+<!-- Meta Keywords -->
+<meta name="keywords" content="Cadibal, free education, job searching, social community, developers, students, online learning, career growth">
+
+<!-- Author -->
+<meta name="author" content="Cadibal Team">
+
+<!-- Verification Tags (for Google Search Console, Bing Webmaster Tools, etc.) -->
+<meta name="google-site-verification" content="verification-token">
+<meta name="bing-site-verification" content="verification-token">
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Cadibal",
+      "url": "https://cadibal.com",
+      "logo": "https://cadibal.com/static/img/logo/favicon.png",
+      "description": "Cadibal is a platform dedicated to providing free education, job searching resources, and a social community for developers and students to connect and grow.",
+      "sameAs": [
+        "https://www.instagram.com/cadibal.info/",
+        "https://x.com/cadibal_info",
+        "https://www.linkedin.com/company/cadibaltech/"
+      ]
+    }
+    </script>
+<!-- Robots -->
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="Cadibal - Free Education and Social Community">
+<meta property="og:description" content="Join Cadibal, the platform for free education, job searching, and creating a social community to help developers and students.">
+<meta property="og:url" content="https://cadibal.com">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cadibal - Empowering Developers and Students">
+<meta name="twitter:description" content="Discover Cadibal, a platform offering free education, job searching resources, and a social community for developers and students.">
+<meta name="twitter:image" content="https://cadibal.com/assets/images/cadibal-social-banner.jpg">
+<meta name="twitter:url" content="https://cadibal.com">
+
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://cadibal.com">
+  <title>Job</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/nav.css">
+  <link rel="stylesheet" href="../static/css/job.css">
+  <link rel="stylesheet" href="../static/css/dashboard.css">
+  <script src="../static/js/dashboard.js"></script>
+</head>
+<body>
+  {% include 'navbar.html' %}
+
+  <div class="container my-5">
+    <div class="row g-4">
+        <!-- Sidebar Filters -->
+        <div class="col-lg-3">
+            <div class="sidebar">
+                <h5 class="filter-title">Filter Jobs</h5>
+                <div class="mb-3">
+                    <label for="roleFilter" class="form-label">Role</label>
+                    <input type="text" id="roleFilter" class="form-control" placeholder="e.g., UI/UX Designer">
+                </div>
+                <div class="mb-3">
+                    <label for="locationFilter" class="form-label">Location</label>
+                    <input type="text" id="locationFilter" class="form-control" placeholder="e.g., Chennai">
+                </div>
+                <div class="mb-3">
+                    <label for="skillFilter" class="form-label">Skill</label>
+                    <input type="text" id="skillFilter" class="form-control" placeholder="e.g., HTML, Figma">
+                </div>
+                <button class="btn btn-apply" id="filterBtn">Apply Filters</button>
+            </div>
+        </div>
+
+        <!-- Job Cards Section -->
+        <div class="col-lg-9">
+            <h1>
+                {% if user.firstName %}
+                    {{ user.firstName }}
+                {% else %}
+                    {{ user.name }}
+                {% endif %}
+            </h1>
+            <div class="row" id="jobCardsSection">
+                <!-- Loop through jobs and create job cards -->
+                {% for job in jobs %}
+                <div class="col-lg-6">
+                    <div class="job-card d-flex align-items-center mb-4" 
+                         data-role="{{ job.job_domain }}" 
+                         data-location="{{ job.job_location }}" 
+                         data-skill="{{ job.skills_required }}" 
+                         data-description="{{ job.job_description }}" 
+                         data-qualifications="{{ job.required_qualification }}" 
+                         data-link="{{ job.job_link }}">
+                        <img src="../{{ job.publisher_photo }}" alt="Company Logo" class="company-logo">
+                        <div class="flex-grow-1">
+                            <h5 class="job-title">{{ job.job_title }}</h5>
+                            <p class="company-name">{{ job.publisher_name }}</p>
+                            <p class="mb-0">
+                                <i class="bi bi-geo-alt-fill text-danger me-2"></i>{{ job.job_location }}
+                                <i class="bi bi-briefcase text-warning ms-3 me-2"></i>{{ job.experience_level }}+ Years Experience
+                            </p>
+                        </div>
+                        <div class="text-end">
+                            <p class="text-primary mb-2">Package: {{ job.salary }} LPA</p>
+                            <!-- Button to open modal -->
+                            <button class="btn apply-btn" data-bs-toggle="modal" data-bs-target="#jobDetailsModal" onclick="showJobDetails(this)">Click</button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!-- Modal for Job Details -->
+        <div class="modal fade" id="jobDetailsModal" tabindex="-1" aria-labelledby="jobDetailsModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="jobDetailsModalLabel">Job Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h5 id="modalJobTitle"></h5>
+                        <p id="modalJobDescription"></p>
+                        <p><strong>Location:</strong> <span id="modalJobLocation"></span></p>
+                        <p><strong>Experience:</strong> <span id="modalJobExperience"></span> Years</p>
+                        <p><strong>Qualifications:</strong> <span id="modalJobQualifications"></span></p>
+                        <p><strong>Skills Required:</strong> <span id="modalJobSkills"></span></p>
+                        <a href="#" id="modalJobLink" class="btn btn-primary" target="_blank">Apply Now</a>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include 'warning.html' %}
+
+        
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Job card click to show modal
+    function showJobDetails(button) {
+        // Get the parent job card
+        const jobCard = button.closest('.job-card');
+
+        // Extract data attributes from the job card
+        const title = jobCard.querySelector('.job-title').textContent;
+        const description = jobCard.getAttribute('data-description');
+        const location = jobCard.getAttribute('data-location');
+        const experience = jobCard.getAttribute('data-experience');
+        const qualifications = jobCard.getAttribute('data-qualifications');
+        const skills = jobCard.getAttribute('data-skill');
+        const link = jobCard.getAttribute('data-link');
+
+        // Populate modal fields
+        document.getElementById('modalJobTitle').textContent = title;
+        document.getElementById('modalJobDescription').textContent = description;
+        document.getElementById('modalJobLocation').textContent = location;
+        document.getElementById('modalJobExperience').textContent = experience;
+        document.getElementById('modalJobQualifications').textContent = qualifications;
+        document.getElementById('modalJobSkills').textContent = skills;
+        document.getElementById('modalJobLink').setAttribute('href', link);
+    }
+
+    // Filter functionality (Basic front-end filter)
+    document.getElementById('filterBtn').addEventListener('click', function() {
+        const role = document.getElementById('roleFilter').value.toLowerCase();
+        const location = document.getElementById('locationFilter').value.toLowerCase();
+        const skill = document.getElementById('skillFilter').value.toLowerCase();
+
+        document.querySelectorAll('.job-card').forEach(card => {
+            const cardRole = card.getAttribute('data-role').toLowerCase();
+            const cardLocation = card.getAttribute('data-location').toLowerCase();
+            const cardSkills = card.getAttribute('data-skill').toLowerCase();
+
+            if ((role && !cardRole.includes(role)) || 
+                (location && !cardLocation.includes(location)) || 
+                (skill && !cardSkills.includes(skill))) {
+                card.style.display = 'none';
+            } else {
+                card.style.display = 'flex';
+            }
+        });
+    });
+</script>
+  
+
+</body>
+</html>

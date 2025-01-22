@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Viewport -->
+
+<!-- Title -->
+<title>Cadibal</title>
+
+<!-- Meta Description -->
+<meta name="description" content="Cadibal is a platform dedicated to providing free education, job searching resources, and a social community for developers and students to connect and grow.">
+
+<!-- Meta Keywords -->
+<meta name="keywords" content="Cadibal, free education, job searching, social community, developers, students, online learning, career growth">
+
+<!-- Author -->
+<meta name="author" content="Cadibal Team">
+
+<!-- Robots -->
+<meta name="robots" content="index, follow">
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Cadibal",
+      "url": "https://cadibal.com",
+      "logo": "https://cadibal.com/static/img/logo/favicon.png",
+      "description": "Cadibal is a platform dedicated to providing free education, job searching resources, and a social community for developers and students to connect and grow.",
+      "sameAs": [
+        "https://www.instagram.com/cadibal.info/",
+        "https://x.com/cadibal_info",
+        "https://www.linkedin.com/company/cadibaltech/"
+      ]
+    }
+    </script>
+<!-- Verification Tags (for Google Search Console, Bing Webmaster Tools, etc.) -->
+<meta name="google-site-verification" content="verification-token">
+<meta name="bing-site-verification" content="verification-token">
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="Cadibal - Free Education and Social Community">
+<meta property="og:description" content="Join Cadibal, the platform for free education, job searching, and creating a social community to help developers and students.">
+<meta property="og:url" content="https://cadibal.com">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cadibal - Empowering Developers and Students">
+<meta name="twitter:description" content="Discover Cadibal, a platform offering free education, job searching resources, and a social community for developers and students.">
+<meta name="twitter:image" content="https://cadibal.com/assets/images/cadibal-social-banner.jpg">
+<meta name="twitter:url" content="https://cadibal.com">
+
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://cadibal.com">
+    <link rel="icon" type="image/x-icon" href="../static/img/logo/favicon.png">
+    <title>Cadibal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/nav.css">
+    <link rel="stylesheet" href="../static/css/play.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../static/css/dashboard.css">
+    <script src="../static/js/dashboard.js"></script>
+    <style>
+       /* Style for liked button */
+.btn.like.liked {
+    background-color: #007bff;  /* For example, change the background color */
+}
+
+.btn.like.liked i {
+    color: #ffffff;  /* Change icon color */
+}
+
+    
+    </style>
+</head>
+<body>
+
+    {% include 'navbar.html' %}
+
+
+    <section class="video-container">
+        <!-- Ad Video -->
+        <div id="ad-container" class="ad-container" style="display:block;">
+            <video id="adPlayer" controls autoplay>
+                <source src="../{{ ad['video_url'] }}" type="video/mp4">
+                <source src="movie.ogg" type="video/ogg">
+                Your browser does not support the video tag.
+            </video>
+            <div id="skip-button-container" class="text-center" style="display:none;">
+                <button id="skip-button" class="btn btn-primary">Skip Ad</button>
+            </div>
+        </div>
+    
+        <!-- Video Player -->
+        <div id="video-player-container" style="display:none;">
+            <video id="videoPlayer" controls controlsList="nodownload noremoteplayback" >
+                <source src="../{{ video['video'] }}" type="video/mp4">
+                <source src="movie.ogg" type="video/ogg">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    
+        <!-- Video Details -->
+        <div class="video-details mt-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <!-- Channel Info -->
+                <div class="channel-info d-flex align-items-center">
+                    <img src="../{{ video['publisher_photo'] }}" alt="Channel Profile" class="rounded-circle" style="width: 50px; height: 50px;">
+                    <div class="ms-3">
+                        <h6 class="mb-0">{{ video['publisher_name'] }}</h6>
+                    </div>
+                </div>
+    
+                <form method="POST" action="{{ url_for('play_video', video_id=video['_id']) }}">
+                    <button type="button" id="likeButton" class="btn btn-like" aria-label="Like this video">
+                        <i class="bi bi-hand-thumbs-up"></i> <span id="likeCount">{{ video['like_count'] }}</span>
+                    </button>
+                    
+                </form>
+            </div>
+        </div>
+    
+        <!-- Channel Description Section -->
+        <div class="channel-description mt-3">
+            <div class="card" style="max-width: 1200px; margin: auto;">
+                <div class="card-body">
+                    <h5 class="card-title">Channel Description</h5>
+                    <p class="card-text text-muted">
+                        {{ video['description'] }}
+                    </p>
+                    {% if video['link'] %}
+                        <a href="{{ video['link'] }}" class="btn btn-primary" target="_blank">Visit Website</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+    </section>
+    {% include 'warning.html' %}
+
+    
+    <script>
+        // Wait for the ad video to load
+        var adPlayer = document.getElementById('adPlayer');
+        var videoPlayerContainer = document.getElementById('video-player-container');
+        var adContainer = document.getElementById('ad-container');
+        var skipButtonContainer = document.getElementById('skip-button-container');
+        var skipButton = document.getElementById('skip-button');
+    
+        // Show skip button after 10 seconds of ad playback
+        setTimeout(function() {
+            skipButtonContainer.style.display = 'block';
+        }, 10000);  // 10 seconds
+    
+        // Skip ad and show main video
+        skipButton.addEventListener('click', function() {
+            adContainer.style.display = 'none';
+            videoPlayerContainer.style.display = 'block';
+            adPlayer.pause();  // Pause the ad video
+        });
+    
+        // Auto-skip ad after the ad finishes
+        adPlayer.onended = function() {
+            adContainer.style.display = 'none';
+            videoPlayerContainer.style.display = 'block';
+        };
+    </script>
+   <script>
+    document.getElementById("likeButton").addEventListener("click", function() {
+        var videoId = "{{ video['_id'] }}";  // Ensure you pass the video ID from your template to JavaScript
+        var likeCountElement = document.getElementById("likeCount");
+        var likeButton = document.getElementById("likeButton");
+
+        // Perform the AJAX request
+        fetch('/like_video/' + videoId, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'same-origin',  // Include credentials (cookies/session data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.new_like_count !== undefined) {
+                // Update the like count on the frontend
+                likeCountElement.textContent = data.new_like_count;
+
+                // Toggle button text/icon based on the like/dislike state
+                if (data.new_like_count > 0) {
+                    // If the video is liked, change button style to indicate "dislike"
+                    likeButton.classList.add('liked');  // Add a class for "liked" state, if desired
+                } else {
+                    // If no likes are left, reset button to the unliked state
+                    likeButton.classList.remove('liked');
+                }
+            } else if (data.error) {
+                alert(data.error);  // Show an error if the user is not logged in or video is not found
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while processing your like/dislike.');
+        });
+    });
+</script>
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
